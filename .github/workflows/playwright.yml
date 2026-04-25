@@ -38,8 +38,8 @@ jobs:
       env:
         BANK_ADMIN_USER_NAME: ${{ secrets.BANK_ADMIN_USER_NAME }}
         BANK_ADMIN_USER_PASSWORD: ${{ secrets.BANK_ADMIN_USER_PASSWORD }}
-        BANK_VIEWER_USER_NAME: ${{ secrets.BANK_READONLY_USER_NAME }}
-        BANK_VIEWER_USER_PASSWORD: ${{ secrets.BANK_READONLY_USER_PASSWORD }}
+        BANK_READONLY_USER_NAME: ${{ secrets.BANK_READONLY_USER_NAME }}
+        BANK_READONLY_USER_PASSWORD: ${{ secrets.BANK_READONLY_USER_PASSWORD }}
 
     - name: Upload Playwright Report
       uses: actions/upload-artifact@v4
