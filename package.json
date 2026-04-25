@@ -1,0 +1,23 @@
+{
+  "name": "playground-bank-playwright-bdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bddgen": "bddgen",
+    "test": "npm run bddgen && npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "playwright-bdd": "^8.5.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.1"
+  }
+
+}
