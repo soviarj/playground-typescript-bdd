@@ -17,6 +17,7 @@ Given('The user is on the forms page', async ({page})=> {
 When('The user submits form with all fields filled with valid data', async ({page})=> {
     const formsPage = new FormsPage(page);
     await formsPage.fillForm(formData);
+    await page.waitForTimeout(500); // Wait for form to be processed before submitting
     await page.locator(FormsLocators.submitFormBtn).click();
 });
 
