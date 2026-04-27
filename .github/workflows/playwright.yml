@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:
+      inputs:
+        tag:
+          description: 'Tag to run (e.g. @smoke, @regress, TC-LOGIN-01)'
+          required: false
+          default: ''
 
 jobs:
   test:
@@ -35,7 +40,12 @@ jobs:
       run: npx playwright test --list
 
     - name: Run Playwright tests
-      run: npx playwright test --reporter=line,html
+      run: |
+        if [ -z "${{ github.event.inputs.tag }}" ]; then
+          npx playwright test --reporter=line,html
+        else
+          npx playwright test --grep "${{ github.event.inputs.tag }}" --reporter=line,html
+        fi
       env:
         BANK_ADMIN_USER_NAME: ${{ secrets.BANK_ADMIN_USER_NAME }}
         BANK_ADMIN_USER_PASSWORD: ${{ secrets.BANK_ADMIN_USER_PASSWORD }}
