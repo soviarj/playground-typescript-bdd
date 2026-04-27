@@ -22,7 +22,7 @@ export default defineConfig({
   reporter: [['html', { open: 'never' }]],
 
   use: {
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   projects: [

@@ -28,6 +28,7 @@ When('The user fills the form with invalid {string} format and submits it', asyn
 });
 
 When('The user submits empty form', async ({page})=> {
+    await page.waitForTimeout(1000); // Wait for form to be fully loaded
     await page.locator(FormsLocators.submitFormBtn).click();
 });
 
@@ -42,21 +43,21 @@ Then('The form is submitted successfully', async ({page})=> {
 });
 
 Then('The appropriate error messages are displayed', async ({page})=> {
-    await expect(page.locator(FormsLocators.errors.errorFirstName)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorLastName)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorEmail)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorPhone)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorDob)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorGender)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorCountry)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorCity)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorPassword)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorConfirmPassword)).toBeVisible();
-    await expect(page.locator(FormsLocators.errors.errorTerms)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorFirstName)).toBeVisible({timeout: 2000});
+    await expect.soft(page.locator(FormsLocators.errors.errorLastName)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorEmail)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorPhone)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorDob)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorGender)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorCountry)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorCity)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorPassword)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorConfirmPassword)).toBeVisible();
+    await expect.soft(page.locator(FormsLocators.errors.errorTerms)).toBeVisible();
 });
 
 Then('The appropriate validation error message is displayed for {string}', async ({page}, field: Field)=> {
     const formsPage = new FormsPage(page);
     const config = fieldConfig[field];
-    await expect(page.locator(config.errorLocator)).toBeVisible();
+    await expect(page.locator(config.errorLocator)).toBeVisible({timeout: 2000});
 });
