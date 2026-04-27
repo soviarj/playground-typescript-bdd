@@ -1,6 +1,6 @@
 import { test as base } from 'playwright-bdd';
-import { LoginPage } from '../pages/loginPage';
-import { DashboardPage } from '../pages/dashboardPage';
+import { LoginPage } from '../banking/pages/loginPage';
+import { DashboardPage } from '../banking/pages/dashboardPage';
 
 type Fixtures = {
   login: LoginPage;
