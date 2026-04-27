@@ -41,6 +41,14 @@ BANK_READONLY_USER_PASSWORD=viewer123
 
 ---
 
+## 📁 Project Structure
+
+Tests are located in the `all-tested-systems` directory, organized into subfolders based on the tested system (e.g. `all-tested-systems/banking/test`).
+
+Each test module contains:
+- `test-features` – Gherkin scenarios that define the test cases
+- `test-steps` – step definitions implementing the logic executed by the Gherkin scenarios
+
 ## ▶️ Running Tests
 
 ### 🧪 Run all tests
